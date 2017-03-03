@@ -1,0 +1,377 @@
+\documentclass[12pt, a4paper,oneside]{book}
+\usepackage{animate}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{fullpage}
+\usepackage{paracol}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+% Using {Our own chosen name } mathnamespace will be used in actual programing to make sure names are not used.
+
+%\These notes are note nearly as cross referenced or modular as I would like. 
+% More work needs to be done on the infinitesimal calculus part.
+
+%To try and understand math dependencies try and look at gnu octave math functions and see which ones call which other ones. If this is not the most logical pattern for humans to follow. i.e a round about computer method obviously ignore it. 
+%why is the first letter of paragraphs always long before the rest 
+
+% * <jezrikrinsky@gmail.com> 2017-02-03T04:56:28.990Z:
+
+\begin{document}                                              
+	 \title{ Calculus  \\
+ \normalsize  "We are dwarfs, but dwarfs who stand on the shoulders of those giants, and small though we are, we sometimes manage to see farther on 				the horizon than they." \\ \normalsize Umberto Eco } 
+    \date{\today} 
+ 		%If you are a new contributer feel free to add your name to the end of the list of authors 
+	
+    \author{Jezri Krinsky \and Keelan Krinsky 
+    	\and Mbuso Makitla}                                               
+	
+    \maketitle
+		{\huge All names put in brackets are unique to these notes please do not write them in official work or anything like that!!!}
+    
+    \tableofcontents
+        \paragraph{Definition of Dynamic Quantities} 
+           
+           \footnote{I find this useful for understanding the formal definition of 										limits, but I made up most of it, so DON'T TRUST IT.}
+
+			\begin{paragraph} Dynamic quantities are a type of quantity that real numbers 								cannot express. They have no fixed position on a number line only a set 								relationship to any given fixed position on a number line. There are two 								types, that I know of.
+					%the use of the word set in "set relation" in the above paragraph is 						misleading as the same word is earlier used in a different context, same 					problem applies to replacing set with fixed
+			\end{paragraph}
+				%Why is this section going after the footnote?
+	
+    		\begin{paracol}{2}\
+				\begin{leftcolumn}
+					Infinity
+						\\ Infinity is greater than an arbitrarily large real number $\alpha $ \\ 					Infinitesimal \\
+						An infinitesimal is smaller than an arbitrarily small real number and 							greater than zero. 
+				\end{leftcolumn}
+
+				\begin{rightcolumn}
+					$ \infty$ \\ $\alpha < x$ \\ \\ $\frac{1}{\infty}$ \\ \\ $0<x<\delta$
+					\end{rightcolumn}
+				% right and left columns are not correctly aligned 
+			\end{paracol}
+\paragraph{Infinitesimals}
+\begin{paragraph} An element  \(x \in \mathbb{HR}\) is infinitesimal if \(\vert x \vert < \mathbb{R^+}\)
+\end{paragraph}
+\paragraph{Infinities}
+\begin{paragraph}
+An element \( x \in \mathbb{HR}\) is infinite if \(\vert x \vert > \mathbb{R^+}\)
+\end{paragraph}
+\paragraph{Infinitely close}
+\begin{paragraph}
+Two elements \(x_0,x_1 \in \mathbb{HR}\) are infinitely close if \(\vert x-x_0 \vert\) is infinitesimal.\\
+\textbf{References:} Infinitesimals 
+\end{paragraph}
+\paragraph{Monad}
+\begin{paragraph}
+The monad of \(x_0 \in \mathbb{HR}\) is the set of all \(x_1 \in \mathbb{HR}\) infinitely close to \(x_0\)\\
+\textbf{Infinitely close}
+\end{paragraph}
+\paragraph{Galaxy}
+\begin{paragraph}
+The galaxy of \(x_0 \in \mathbb{HR}\) is the set of all \(x_1 \in \mathbb{HR}\) a finite distance from \(x_0\)\\
+\textbf{Infinitely close}
+\end{paragraph}
+\paragraph{Theorem of galaxy closure}
+\begin{paragraph}
+The sums differences and products of members of galaxy\(x_0\) are in galaxy\(x_0\)\\
+\textbf{References:} Galaxy; Basic Arithmetic ; closure
+\end{paragraph}
+\paragraph{Theorem of monad(0) closure}  \footnote{Any two monads are equal or disjointed}
+\begin{paragraph}
+The sums differences and products of members of the monad of zero (infinitesimals) and the product of a member by a finite number are all within the monad(0)\\
+\textbf{References:} monad; Basic Arithmetic ; closure
+\end{paragraph}
+\paragraph{Theorem of infinite infinitesimal inverse }
+\begin{paragraph}
+x is infinite  \(\Leftrightarrow \) \(\frac{1}{x}\) is infinitesimal.
+\end{paragraph}
+\paragraph{Standard parts theorem} \footnote{ This may need text here\(x_0 is infinitely close to x_1 \leftrightarrow st(x_0)=st(x_y)\)}
+\begin{paragraph}
+ All hyperreals which are not infinite are infinitely close to a single real number which is given by the function \(st(x)\) \\
+%See if there is any way of finding the standard part here  http://www.math.wisc.edu/~keisler/calc.html
+ \textbf{Rules for st(x)}
+ \begin{enumerate}
+ \item{addition\(st(x_0+x_1)=st(x_0)+st(x_1)\)}
+ \item{subtraction \(st(x_0-x_1) = st(x_0)+st(x_1)\)}
+ \item{multiplication \(st(x_0 x_1) = st(x_0)st(x_1)\)}
+ \item{devision \(st(\frac{x_0}{x_1}=\frac{st9(x_0)}{st(x_1)})\quad when st(x_1)\neq 0\)}
+ \item{powers \(st(x^n)=(st(x))^n\) }%Not sure of this one  
+ \end{enumerate}
+\end{paragraph}
+
+
+
+\part{Pre-Calculus Theory}
+\chapter{Limits}
+\section{Right hand limit}
+\paragraph{Definition of right hand limit}\footnote{arrow in book diagram implies ray rather than line segment for limited \( \delta\) also it is drawn as if there was a gap on the x axis and range is drawn as if including lower and upper bounds}
+% even if ray not included in is important to note direction in which f(x) is moving to see trend which identifies limit 
+
+\( \lim_{x \to x_0^+}f(x) = y_0 \) has a right hand limit at \(x_0\) \(\Leftrightarrow\) for \( \epsilon \in \mathbb{R^+} \) there is a corresponding \( \delta \in \mathbb{R^+} \) such that for all values of x  such that \[|f(x) - y_0| <\epsilon \quad whenever \quad x_0 < x < x_0+\delta\]
+
+\begin{tikzpicture}
+\draw[<->](0,5)--(0,0)--(5.5,0);
+\draw (-0.1,3)--(0,3);
+\draw (-0.1,2)--(0,2);
+\draw (-0.1,1)--(0,1);
+\draw (3,-0.1)--(3,0);
+\draw (5, -0.1)--(5,0);
+\draw (0.2,3) circle [radius=0.1];
+\draw (0.2, 2.95)--(0.2,1.05);
+\draw (0.2 ,1) circle [radius = 0.1];
+\draw (3,0.2)circle [radius = 0.1];
+\draw (3.05, 0.2)--(4.95, 0.2);
+\draw (5,0.2) circle [radius=0.1];
+\node at (0,6){y};
+\node at (6,0){x};
+\node at (-1,3){\(y_0+\epsilon \)};
+\node at (-1,2){\(y_0\)};
+\node at (-1,1){\(y_0-\epsilon\)};
+\node at (5,-0.5){\(x_0 + \delta\)};
+\node at (3,-0.5){\(x_0\)};
+\end{tikzpicture}
+
+\section{Left Hand Limit}
+\paragraph{Definition of Left hand limit}
+
+\(f(x)\) has a left hand hand limit at \(x_0\)  \( \lim_{x \to x_0}f(x) = y_0 \) iff for \( \epsilon \in \mathbb{R^+} \) there is a corresponding \( \delta \in \mathbb{R^+} \) such that for all values of x  such that \[|f(x) - y_0| <\epsilon \quad whenever \quad x_0 -\delta < x < x_0\]
+\begin{tikzpicture}
+%This will eventually be replaced with a moving diagram showing y+epsilon moving in and out as the value of delta changes. and rotating through about ten different functions.  
+% in the mean time put bidirectional arrows next to y+epsilon y - epsilon and x +delta with some similarity i.e color or thickness to show y+ and - epsilon are the same. 
+\draw[<->](0,5)--(0,0)--(5.5,0);
+\draw (-0.1,3)--(0,3);
+\draw (-0.1,2)--(0,2);
+\draw (-0.1,1)--(0,1);
+\draw (3,-0.1)--(3,0);
+\draw (1, -0.1)--(1,0);
+\draw (0.2,3) circle [radius=0.1];
+\draw (0.2, 2.95)--(0.2,1.05);
+\draw (0.2 ,1) circle [radius = 0.1];
+\draw (3,0.2)circle [radius = 0.1];
+\draw (1.1, 0.2)--(2.9, 0.2);
+\draw (1,0.2) circle [radius=0.1];
+\node at (0,6){y};
+\node at (6,0){x};
+\node at (-1,3){\(y_0+\epsilon \)};
+\node at (-1,2){\(y_0\)};
+\node at (-1,2){\(y_0- \epsilon\)};
+\node at (1, -0.5){\(x_0-\delta\)};
+\node at (3,-0.5){\(x_0\)};
+\end{tikzpicture}
+
+
+\section{Limit definition}
+\paragraph{Limit definition}
+\begin{paragraph}
+Check both left hand and  right hand limits agree. \\
+Right hand limit: subtract \(x_0\) from all three parts of the right equation.\[|f(x)-y_0|<\epsilon \quad whenever \quad 0<x-x_0<\delta\]
+Left hand limit: Add \(x_0\) to each side \[|f(x)-y_0|<epsilon \quad whenever \quad -\delta < x-x_0<0\]
+Combining these two we can now say
+\[|f(x)-y_0|<epsilon \quad whenever \quad 0 < |x-x_0|<\delta\]
+\end{paragraph}
+\paragraph{Informal definition} \begin{paragraph} Limit of $f(x)=y_0 $ as ${x \to x_0}$ iff \footnote{means if and only if}: the gap between $y$ and $y_0$can be made as small as we choose provided $x$ is kept close enough to $x_0$\end{paragraph}
+\paragraph{Formal definition of a limit} \begin{paragraph} The limit of $f(x)=y_0$ as ${x \to x_0}$ ( where $f(x)$ is defined for an open interval about $x_0$ except possibly at $x_0$ itself )iff:  is used  use whenever instead of implies as is done on page 80\end{paragraph}
+% y_0 seems less distracting  than  L and gives an indication it is a value of the function of x.
+%http://www.milefoot.com/math/calculus/limits/DeltaEpsilonProofs03.htm\section {Finding limits} may help write the limit definition more clearly. 
+%http://www.oxfordmathcenter.com/drupal7/node/5 shows what is wrong with the informal definition but I don't https://preview.overleaf.com/public/wttvjmjhgxfg/images/0f1481f9ac27068cec2dbcee2ff45dc371388872.jpeg fully understand it.% A large problem seems to be using infinitesimals which are still hazily defined in maths. I wouldn't worry about it to much.
+\section{Finding Limits}
+	\begin{paragraph}
+		We are going to get through all possible limits by proving a small number of limits and proving how 		limits can be combined.
+		To show that \(\lim_{x_0}f(x)=y_0\) we must show that for every epsilon we can find corresponding 			delta. We do this by finding an equation for delta in terms of epsilon. we seem to show to limit laws 			in the same way\\ 
+		Steps \begin{enumerate}
+				\item{Manipulate \( |x-x_0|<\delta\) to get \(|f(x)-y_0|<f(\delta\) }
+				\item{Equate \(f(\delta)\) with \(\epsilon\)}
+				\item{This process actual proves quite tricky so I will put down the example I can find and the 				will be replaced by a general method when one is found
+					\begin{enumerate}
+						\item{Linear equation \[lim_{x\to 5} 3x+2 = 17\] \\
+						There exist a delta for every epsilon such that 
+						\[|3x+2-17|<\epsilon \quad whenever \quad 0<|x-5|<\delta\]
+						\[-\epsilon<3x+2-17<\epsilon\] \[-\epsilon<3x-15<\epsilon\]
+						\[15-\epsilon<3x< 15+ \epsilon\] 
+						\[5-\frac{\epsilon}{3}<x<5+\frac{\epsilon}{3}\] 
+						\[\frac{\epsilon}{3}<x-5<\frac{\epsilon}{3}\] 
+						\[|x-5|<\frac{\epsilon}{3}\] \[\delta = \frac{\epsilon}{3}\]} 
+							% The second part would be good to documents
+                        	%http://www.milefoot.com/math/calculus/limits/DeltaEpsilonProofs03.htm
+				\end{enumerate}}
+			\end{enumerate}
+	\end{paragraph}
+	
+    \paragraph{\(\lim_{x\to x_0} x_0\)(Identrity limit)} 
+		\begin{paragraph} If
+			\[|x-x_0|<\epsilon \quad whenever \quad 0<|x-x_0|< \delta \]
+			we need no formula manipulation here 
+			\[\delta = \epsilon\]
+	\end{paragraph}
+	
+    \paragraph{\(lim_{x\to x_0} k\)(Constant limit)}
+		\begin{paragraph} We seem to need words here to make it compile please fix.
+			\[ |k-k|<\epsilon  \quad whenever \quad 0<|x-x_0|<  \delta \] 
+			This will hold for any positive delta because k-k=0
+	\end{paragraph}
+
+		\section{Adding limits}
+%http://tutorial.math.lamar.edu/Classes/CalcI/LimitProofs.aspx check out proofs on this sight. 
+\paragraph{Addition limit theorem }
+\begin{paragraph}
+If \( \lim_{x\to x_0} f(x) = y_0\) and \(\lim_{x\to x_0}=y_0\) then \(\lim_{x\to x_0}(f(x)+g(x) = y_0+y_1\)
+\textbf{Proof} We must show that a delta exist for every epsilon such that 
+\[|(f(x) -y_0) + (g(x) -y_2))|<\epsilon \quad whenever \quad 0<|x-x_0|< \delta \]
+\[|(f(x) - y_0)| + |(g(x) -y_2))|<\epsilon \footnote{Traingular inequality}\] 
+work on this
+\end{paragraph}
+\section{Subtracting limits }
+
+	\section{Limit Laws}
+    %Separate out into separate section and reference properly
+ 		This needs some text here to compile
+        \begin{enumerate}
+ 			\item {\[\lim_{x\to x_0} \big[ f(x)+g(x) \big] = \lim_{x\to x_0} f(x) + 						 \lim_{x\to x_0} g(x) =y_0+y_1\]}
+           \item {\[\lim_{x\to x_0} \big[ f(x)-g(x) \big] = \lim_{x\to x_0} f(x) - 							 \lim_{x\to x_0} g(x) =y_0-y_1\]}
+          \item {\[\lim_{x\to x_0} \big[ kf(x)) \big] =k\lim_{x\to x_0} f(x)=ky_0\]}
+         \item{ \[\lim_{x\to x_0} \big[f(x)/g(x) \big]= \big[\lim_{x\to x_0} f(x)\big] 					\big[\lim_{x\to x_0} g(x)\big]\]}
+          \item{ \[ If y_1  \neq{0} \lim_{x\to x_0} \big [\frac{f(x)}{g(x)} \big]=  						\frac{\lim_{x\to x_0} f(x)}{ \lim_{x\to x_0} g(x)}= \frac{y_0}{y_1}\]}
+         	 
+          \item \footnote{by definition}{\[\lim_{x\to x_0} f(x) =f(x) \quad where \quad 					f(x) \, \in \, continues \, functions\]\\}
+   \item{		\textbf{Continues functions}
+       
+        \begin{enumerate}
+      		\item{polynomials}
+     		 \item{roots as long as they are real \\ i.e \(x > 0\) for 
+          			\({x}^{\frac{1}{n}}\) if \( n \in odd \mathbb{Z} \)}
+          				 %This needs to be put better
+        \item{sin}
+         \item{cos}
+           
+           %many more
+         
+                   \end{enumerate}
+           }
+    	 \item{\[\lim{x \to 0} \frac{sin(x)}{x}=1\]}
+
+        	% see page 12 for limit laws 
+		\end{enumerate}
+    \textbf{References:} Proof that infinitesimals act like real numbers; Continues functions 
+    \section{Fundamental Limits}
+        
+			% see theorem 1.8 , as well as sin and cos functions.  
+
+\part {Calculus with infinitesimals}
+% we need to find symbols for this section.
+%This section is only beginning. For more resources Google calculus with infinitesimals Robinsons hyper reals and Leibniz 
+\chapter{Derivatives}
+\paragraph{Finding derivatives of functions with infinitesimals}
+\begin{paragraph}
+% we will use lower case \delta for an infinitesimal amount
+Start of with finding the gradient for a point to the right of \(x_0\) \[\frac{\Delta f(x)}{\Delta x}= \frac{f(x+ \delta x) -f(x)}{(x_0+\delta x)-x_0} = \quad some \; a+ b\delta x \]
+\end{paragraph}
+\section{Sum rule of differentiates}
+\paragraph{Sum rule of differentiation}
+\begin{paragraph}
+Let\( f(x) = u(x) + v(x) \) Then
+\[ \delta f(x) = ((u(x) + \delta u(x)) + (v(x) + \delta v(x) - u(x) -v(x) = \delta u-\delta v\]
+% the book just uses u and v not u(x) and v(x) is it simple to think of them as values which an unspecified function would map x onto I am just worried that they look like constants?
+\[ \frac{\delta f(x)}{\delta x} = \frac{\delta u(x)}{\delta x}+\frac{\delta v(x)}{\delta x}\]
+\textbf{ References:} Addition of functions; infinitesimals; rates of change; Expanding out brackets...
+\end{paragraph}
+
+\section{ Constant coefficient rule}
+\paragraph {Constant coefficient rule}
+Let \(f(x) = cu(x)\) then
+\[ \delta f(x) = c(u+\delta u) - cu = c\delta u\]
+\[\frac{\delta f(x)}{\delta x}=c\frac{\delta u(x)}{\delta x}\]
+
+
+\section{Chain rule}
+\paragraph{Chain rule}
+\begin{paragraph}
+y=f(x) AND
+z=g(y)\\
+z=g(f(x)) : h(x)=z ; h(x)= g(f(x))\\
+Because hyper real devision is defnined for \( \neq \)
+\[\frac{\delta z}{\delta x}=\frac{\delta z}{\delta y} \times \frac{\delta y}{\delta x}\]
+Replacing z with h(x) z with g(f(x)) and,  y with f(x) 
+\[ \frac{\delta h(x)}{ \delta x} = \frac{ \delta g(f(x))}{\delta f(x)} \times \frac{\delta {f(x)}}{\delta x} \]
+By the definition of the differentiate of a function
+\[h'(x)=g'(f(x))f'(x)\]
+
+\textbf{References:} definition of a differentiate; Algebraic operations on hyper reals
+\end{paragraph}
+
+
+
+
+\section{Product rule}
+	\paragraph{Result}
+	\begin{paragraph}
+	If \(h(x)=g(x)f(x)\) then
+	\[h'(x)=g'(x)f(x)+g(x)f('x)\]
+	\end{paragraph}
+
+	\paragraph{Proof}
+    \begin{paragraph}
+  	{\[y_0=f(x) \quad AND \quad y_1 = g(x)\]
+    \[y_2=f(x)g(x)=h(x)\]
+	\[\frac{\delta y_2}{\delta x}\]  }  
+    \end{paragraph}
+
+
+
+
+\section{Quotient rule}
+
+
+
+
+\section{Power rule}
+
+
+% I don't think any of this is true 
+%Then we find the gradient for a point left of \(x_0\)  \[\frac{\Delta y}{\Delta x}= \frac{ f(x) - f(\delta x -x)}{x_0-(x_0-\delta x)} = \quad some \; a- b\delta x \]
+%Then we need to ask ourselves what is a %forward slash 
+%the real value between\[a+b\delta x\quad and \quad a-b\delta x \] And we arrive at the answer A. 
+%\end{paragraph}
+\section{Finding derivatives}
+\paragraph{x+h}
+
+\section{Finding derivatives}
+
+
+\part {Algebra Extra}
+
+\part {Pre-Calculus Extra}
+
+\part{Calculus Extra}
+
+\appendix 
+\part{Notation}
+% Find a more suitable dictionary like format
+\chapter{Naive set theory}
+\paragraph{\(\in\)}
+\begin{paragraph}
+Means in: as in \(a_0 \in \mathbf{A}\) \textit{\(a_0\) is in set \(\mathbf{A}\)} 
+\end{paragraph}
+\paragraph {\(\subset\)}
+\paragraph{\(\cap\)}
+\begin{paragraph}
+Intersection
+\end{paragraph}
+\paragraph{\(\cup\)}
+\begin{paragraph}
+Union
+\end{paragraph}
+Also refer to boolean algebra section for and and or statements.
+\paragraph{\(\simeq\) is infinitily close to }
+\chapter{Calculus}
+\chapter{Algebra}
+
+
+
+\end{document}
+
+
+
+\end {document}
