@@ -1,0 +1,25 @@
+\documentclass[12pt, a4paper,oneside]{book}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{fullpage}
+\usepackage{paracol}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{color}
+
+\title{Binary mathematic and Boolean logic for coms and math}
+\begin{document}
+{\huge{Names given in brackets are not official ones please do not use them in test ect. }}
+\maketitle
+\part{Binary mathematics}
+Binary numbers work almost exactly like normal (denary) numbers so I will just go over normal ones to get a sense of the mechanics  
+\section{Denary(Dekbazo)}
+\paragraph{Denary}
+\begin{paragraph}
+Denary is the normal number system.  To find what quantity 136 is equal to, we multiply 6 by \(10^0\) and add that to 3 time \(10^1\) finally we add 1 times \(10^2\) so the position of the number determines what power of 10 we multiply it by.    
+\end{paragraph}
+\section{Binary(Dubazo)}
+\paragraph{Binary}
+Here we multiply numbers by \(2^n\) depending on their position. 
+\end{document}
